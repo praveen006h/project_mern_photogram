@@ -9,6 +9,14 @@ export const login = (formData, navigate) => async (dispatch) => {
     navigate('/');
   } catch (error) {
     console.log(error);
+    if(error.response){
+      if(error.response.status === 400){
+        alert("Incorrect Password");
+      }
+      else if(error.response.status === 404){
+        alert("Email not available");
+      }
+    }
   }
 };
 
